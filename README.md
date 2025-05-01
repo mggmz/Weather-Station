@@ -1,4 +1,4 @@
-# Meteo Casa-Consciente • Particle Photon × Firebase
+# Meteo Weather Station • Particle Photon × Firebase
 
 Compact IoT weather-station demo: a **Particle Photon** reads temperature & humidity from a **DHT11**, streams the data to **Firebase Realtime Database** through Particle’s native integration, and a lightweight web dashboard built with **HTML + Tailwind CSS + Chart.js** displays everything in real time while an onboard red LED gives local over-temperature alerts.
 
