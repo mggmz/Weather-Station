@@ -30,7 +30,7 @@ const chart = new Chart(ctx, {
 });
 
 // ====== Suscripción realtime =========
-const DEVICE_ID = "PON_AQUÍ_EL_DEVICE_ID";
+const DEVICE_ID = "3a0025000947313037363132";
 const path = `/estacion/${DEVICE_ID}`;
 firebase.database().ref(path).limitToLast(50).on("child_added", snap => {
   const { temp, hum, ts } = snap.val();
