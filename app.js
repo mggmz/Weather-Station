@@ -1,5 +1,4 @@
 import { firebaseConfig } from "./firebaseConfig.js";   // if you externalised it
-// OR delete the line above and paste your config inline ↓
 // const firebaseConfig = { ... };
 
 firebase.initializeApp(firebaseConfig);
