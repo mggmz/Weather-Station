@@ -1,48 +1,46 @@
-import { firebaseConfig } from "./firebaseConfig.js";
-firebase.initializeApp(firebaseConfig);
+import { firebaseConfig } from "./firebaseConfig.js";   // if you externalised it
+// OR delete the line above and paste your config inline ↓
+// const firebaseConfig = { ... };
 
+firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// ====== Gráfica =========
-const ctx = document.getElementById("chart").getContext("2d");
+// ——--- EDIT ONLY THESE TWO CONSTANTS ---------------------
+const DEVICE_ID = "3a0025000947313037363132";           //  <-- tu Photon
+const PATH_PREFIX = "/estacion";                         //  
+// ——----------------------------------------------------
+
+const ref = db.ref(`${PATH_PREFIX}/${DEVICE_ID}`).limitToLast(50);
+
+const $tempNow = document.getElementById("tempNow");
+const $humNow  = document.getElementById("humNow");
+
+const ctx  = document.getElementById("chart").getContext("2d");
 const chart = new Chart(ctx, {
   type: "line",
-  data: {
-    labels: [],
-    datasets: [{
-      label: "Temperatura (°C)",
-      data: [],
-      borderWidth: 2,
-      tension: 0.3
-    },{
-      label: "Humedad (%)",
-      data: [],
-      borderWidth: 2,
-      tension: 0.3
-    }]
-  },
-  options: {
-    responsive: true,
-    scales: {
-      y: { beginAtZero: true }
-    }
-  }
+  data: { labels: [], datasets: [
+    { label:"Temp (°C)", data:[], borderWidth:2, tension:0.3 },
+    { label:"Hum  (%)", data:[], borderWidth:2, tension:0.3 }
+  ] },
+  options:{ responsive:true, scales:{ y:{ beginAtZero:true } } }
 });
 
-// ====== Suscripción realtime =========
-const DEVICE_ID = "3a0025000947313037363132";
-const path = `/estacion/${DEVICE_ID}`;
-firebase.database().ref(path).limitToLast(50).on("child_added", snap => {
+// Realtime listener
+ref.on("child_added", snap => {
   const { temp, hum, ts } = snap.val();
-  // update cards
-  document.getElementById("tempNow").textContent = `${temp.toFixed(1)} °C`;
-  document.getElementById("humNow").textContent  = `${hum.toFixed(1)} %`;
-  // push to chart
-  const tLabel = new Date(ts * 1000).toLocaleTimeString();
-  chart.data.labels.push(tLabel);
+  if (temp == null || hum == null) return;   
+
+  // tarjetas
+  $tempNow.textContent = `${temp.toFixed(1)} °C`;
+  $humNow.textContent  = `${hum.toFixed(1)} %`;
+
+  // gráfica
+  const label = new Date(ts*1000).toLocaleTimeString();
+  chart.data.labels.push(label);
   chart.data.datasets[0].data.push(temp);
   chart.data.datasets[1].data.push(hum);
-  // keep last 20 points
+
+  // solo últimos 20 puntos
   if (chart.data.labels.length > 20) {
     chart.data.labels.shift();
     chart.data.datasets.forEach(d => d.data.shift());
