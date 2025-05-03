@@ -2,6 +2,9 @@
 
 Compact IoT weather-station demo: a **Particle Photon** reads temperature & humidity from a **DHT11**, streams the data to **Firebase Realtime Database** through Particle’s native integration, and a lightweight web dashboard built with **HTML + Tailwind CSS + Chart.js** displays everything in real time while an onboard red LED gives local over-temperature alerts.
 
+
+![Image](https://github.com/user-attachments/assets/913b7c08-3a3f-4e4a-a742-c3bf80b8a71a)
+
 ---
 
 ## 📦 Contents
