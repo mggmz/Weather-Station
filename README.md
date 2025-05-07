@@ -7,7 +7,7 @@ Compact IoT weather-station demo: a **Particle Photon** reads temperature & humi
 
 ---
 
-## 📦 Contents
+## 📦 Contents  
 
 - **firmware/** – Photon source (`weather_station.ino`)  
 - **webpanel/** – front-end  
