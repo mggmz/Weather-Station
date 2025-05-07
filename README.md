@@ -48,7 +48,7 @@ Compact IoT weather-station demo: a **Particle Photon** reads temperature & humi
 ## 🚀 Quick start
 
 ### 1 · Flash the Photon  
-cd firmware particle flash <your_device_id> weather_station.ino
+cd firmware particle flash <your_device_id> weather_station.ino 
 
 
 ### 2 · Create the Firebase integration  
