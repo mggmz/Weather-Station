@@ -7,7 +7,7 @@ Compact IoT weather-station demo: a **Particle Photon** reads temperature & humi
 
 ---
 
-## 📦 Contents  
+##  Contents  
 
 - **firmware/** – Photon source (`weather_station.ino`)  
 - **webpanel/** – front-end  
@@ -18,7 +18,7 @@ Compact IoT weather-station demo: a **Particle Photon** reads temperature & humi
 
 ---
 
-## ⚙️ Prerequisites
+##  Prerequisites
 
 | Item | Version / notes |
 |------|-----------------|
@@ -31,7 +31,7 @@ Compact IoT weather-station demo: a **Particle Photon** reads temperature & humi
 
 ---
 
-## 🔌 Hardware wiring
+##  Hardware wiring
 
 | Photon pin | Component | Note |
 |------------|-----------|------|
@@ -45,7 +45,7 @@ Compact IoT weather-station demo: a **Particle Photon** reads temperature & humi
 
 ---
 
-## 🚀 Quick start
+##  Quick start
 
 ### 1 · Flash the Photon  
 cd firmware particle flash <your_device_id> weather_station.ino 
@@ -65,7 +65,7 @@ Open the Hosting URL printed by the CLI to see live charts.
 
 ---
 
-## 🖥️ Screenshots (in docs/)
+##  Screenshots (in docs/)
 
 | File | Description |
 |------|-------------|
